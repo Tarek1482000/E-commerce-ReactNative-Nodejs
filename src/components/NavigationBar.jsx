@@ -5,7 +5,7 @@ import {GoTo} from '../navigation/GoTo';
 import {useNavigation} from '@react-navigation/native';
 import {HomeI, AccountI, CartI, CategI, NotI} from './NavigationBarIcons';
 
-const NavigationBar = ({place}) => {
+const NavigationBar = ({place, product}) => {
   const {width, height} = useWindowDimensions();
   return (
     <View
@@ -15,7 +15,7 @@ const NavigationBar = ({place}) => {
       </View>
 
       <View style={[Style.iconContainer, {}]}>
-        <CategI Active={place === SCREEN.Category ? true : false} />
+        <CategI Active={place === SCREEN.Category ? true : false} product={product} />
       </View>
 
       <View style={[Style.iconContainer, {}]}>

@@ -10,35 +10,22 @@ import {SIZE, COLOR} from '../constants';
 import {FlashList} from '@shopify/flash-list';
 import ProductImage from './ProductImage';
 
-const ProductTargetDisplayComponent = ({target, products}) => {
+const ProductCategoryDisplayComponent = ({category, products}) => {
   const {width, height} = useWindowDimensions();
   // Check if products is null or undefined, if so, show loading indicator
   if (!products) {
     return (
-      <View
-        style={[
-          Style.container,
-          {justifyContent: 'center', marginTop: SIZE.xLarge * 6},
-        ]}>
+      <View style={[{justifyContent: 'center', marginTop: SIZE.xLarge * 8}]}>
         <ActivityIndicator size="large" color={COLOR.brown} />
       </View>
     );
   }
 
-  // Conditional filtering based on the target
+  // Conditional filtering based on the category
   const filteredProducts =
-    target === 'All'
+    category === 'All'
       ? products
-      : products.filter(product => product.target === target);
-
-  // Check if there are any filtered products, if not, display a message
-  if (!filteredProducts.length) {
-    return (
-      <View style={Style.container}>
-        <Text>No products matching the target</Text>
-      </View>
-    );
-  }
+      : products.filter(product => product.category === category);
 
   return (
     <View style={Style.container}>
@@ -65,13 +52,13 @@ const ProductTargetDisplayComponent = ({target, products}) => {
           );
         }}
         keyExtractor={item => item._id.toString()}
-        estimatedItemSize={500} // Estimated item size for optimization
+        estimatedItemSize={5000} // Estimated item size for optimization
       />
     </View>
   );
 };
 
-export default ProductTargetDisplayComponent;
+export default ProductCategoryDisplayComponent;
 
 const Style = StyleSheet.create({
   container: {

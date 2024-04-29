@@ -107,7 +107,7 @@ const Home = () => {
       </ScrollView>
 
       <View style={Style.NavigationBarContainer}>
-        <NavigationBar place={SCREEN.Home} />
+        <NavigationBar place={SCREEN.Home} product={product} />
       </View>
     </SafeAreaView>
   );

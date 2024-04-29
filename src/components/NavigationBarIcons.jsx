@@ -25,10 +25,13 @@ export const HomeI = ({Active}) => {
   );
 };
 
-export const CategI = ({Active}) => {
+export const CategI = ({Active, product}) => {
   const {width, height} = useWindowDimensions();
   const navigation = useNavigation();
-  const navHandle = () => navigation.navigate(SCREEN.Category);
+  const navHandle = () => {
+    navigation.navigate(SCREEN.Category, {product});
+  };
+
   return (
     <View style={Active ? Style.pressed : null}>
       <CategoryIcon
